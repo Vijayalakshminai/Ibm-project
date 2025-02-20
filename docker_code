@@ -1,3 +1,0 @@
-C:\Users\loges\website
-docker build -t my-nginx-website .
-docker run -d -p 8080:80 --name my-nginx-container my-nginx-website

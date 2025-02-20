@@ -1,0 +1,48 @@
+C:\Users\loges\website
+docker build -t my-nginx-website .
+docker run -d -p 8080:80 --name my-nginx-container my-nginx-website
+
+To run our server Via Kubernetes
+
+az provider show --namespace Microsoft.ContainerService --query "registrationState"
+az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 2 --enable-addons monitoring --generate-ssh-keys
+az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
+nano deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: myACR.azurecr.io/my-nginx-app:v1
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
+
+
+kubectl apply -f deployment.yaml
+kubectl get pods
+kubectl get svc nginx-service
