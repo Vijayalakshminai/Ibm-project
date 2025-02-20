@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hosting a Website with Docker & Nginx</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+            color: #333;
+            text-align: left;
+        }
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .section {
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hosting a Website with Docker & Nginx</h1>
+        
+        <div class="section">
+            <h2>What is Docker?</h2>
+            <p>Docker is a containerization platform that allows developers to package applications along with their dependencies in isolated environments. This ensures that applications run consistently across different computing environments.</p>
+        </div>
+        
+        <div class="section">
+            <h2>How Docker Works</h2>
+            <p>Docker uses containers, which are lightweight, stand-alone executable packages that include everything needed to run a piece of software, including the code, runtime, libraries, and dependencies. Containers are built from images using Dockerfiles, which define the application's setup and configuration.</p>
+        </div>
+        
+        <div class="section">
+            <h2>Steps to Host a Website with Nginx in Docker</h2>
+            <p>1. Create a simple HTML website and place it in a directory.<br>
+               2. Write a Dockerfile specifying the Nginx base image and copying the website files into the container.<br>
+               3. Build a Docker image from the Dockerfile using the command: <code>docker build -t my-nginx-site .</code><br>
+               4. Run the container using: <code>docker run -d -p 8080:80 my-nginx-site</code><br>
+               5. Access the website via <code>http://localhost:8080</code> in a web browser.</p>
+        </div>
+    </div>
+</body>
+</html>
